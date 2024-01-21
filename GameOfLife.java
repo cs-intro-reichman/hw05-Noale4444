@@ -89,13 +89,13 @@ public class GameOfLife {
 	public static int[][] evolve(int[][] board) {
 		int rows = board.length; 
 		int cols = board[0].length;
-		int[][] newBoard = new int[rows][cols]; 
+		int[][] arr = new int[rows][cols]; 
         for(int i = 1; i < rows - 2;i++) {
 			for(int j = 1; j < cols -2; j++) {
-		newBoard[i][j] = cellValue(board, i, j);	
+		arr[i][j] = cellValue(board, i, j);	
 			}
 		}
-		return newBoard;
+		return arr;
 	}
 
 	// Returns the value that cell (i,j) should have in the next generation.
