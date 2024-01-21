@@ -117,13 +117,13 @@ public class GameOfLife {
 		else if(count(board, i, j) > 3)
 		board[i][j] = 0;  
 	}
-	    if(board[i][j] == 0) {
+	    else if(board[i][j] == 0) {
 			if(count(board, i, j) == 3)
 			board[i][j] = 1; 
 			else
 			board[i][j] = 0;
-
 	}
+	    
 		return board[i][j];
 	}
 	
