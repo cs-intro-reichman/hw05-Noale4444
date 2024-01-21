@@ -87,17 +87,31 @@ public class GameOfLife {
 	// Creates a new board from the given board, using the rules of the game.
 	// Uses the cellValue(board,i,j) function to compute the value of each 
 	// cell in the new board. Returns the new board.
-	public static int[][] evolve(int[][] board) {
-		int rows = board.length; 
-		int cols = board[0].length;
-		int[][] arr = new int[rows][cols]; 
-        for(int i = 1; i < rows - 2;i++) {
-			for(int j = 1; j < cols -2; j++) {
-		arr[i][j] = cellValue(board, i, j);	
-			}
-		}
-		return arr;
-	}
+	
+	// Creates a new board from the given board, using the rules of the game.
+// Uses the cellValue(board,i,j) function to compute the value of each 
+// cell in the new board. Returns the new board.
+public static int[][] evolve(int[][] board) {
+    int rows = board.length;
+    int cols = board[0].length;
+    int[][] arr = new int[rows][cols];
+
+    for (int i = 1; i < rows - 1; i++) {
+        for (int j = 1; j < cols - 1; j++) {
+            arr[i][j] = cellValue(board, i, j);
+        }
+    }
+
+    // Update the original board with the values from the new generation.
+    for (int i = 1; i < rows - 1; i++) {
+        for (int j = 1; j < cols - 1; j++) {
+            board[i][j] = arr[i][j];
+        }
+    }
+
+    return board;
+}
+
 
 	// Returns the value that cell (i,j) should have in the next generation.
 	// If the cell is alive (equals 1) and has fewer than two live neighbors, it dies (becomes 0).
