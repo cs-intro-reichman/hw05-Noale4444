@@ -122,25 +122,26 @@ public static int[][] evolve(int[][] board) {
 	// Assumes that i is at least 1 and at most the number of rows in the board - 1. 
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	// Uses the count(board,i,j) function to count the number of alive neighbors.
-	public static int cellValue(int[][] board, int i, int j) {
+
     
-	if(board[i][j] == 1) {
-		if(count(board, i, j) < 2 )
-		board[i][j] = 0; 
-		else if(count(board, i, j) == 2 || count(board, i, j) == 3)
-		board[i][j] = 1; 
-		else if(count(board, i, j) > 3)
-		board[i][j] = 0;  
-	}
-	    else if(board[i][j] == 0) {
-			if(count(board, i, j) == 3)
-			board[i][j] = 1; 
-			else
-			board[i][j] = 0;
-	}
-	    
-		return board[i][j];
-	}
+		public static int cellValue(int[][] board, int i, int j) {
+			int cell = 0;
+			int count = count(board, i, j);
+			if (board[i][j] == 1) {
+				if (count == 2 || count == 3)
+					cell = 1;
+				else
+					cell = 0;
+			}
+			if (board[i][j] == 0) {
+				if (count == 3)
+					cell = 1;
+				else
+					cell = 0;
+			}
+			return cell;
+		}
+	
 	
 	// Counts and returns the number of living neighbors of the given cell
 	// (The cell itself is not counted).
